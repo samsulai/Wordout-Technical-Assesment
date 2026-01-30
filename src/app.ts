@@ -1,8 +1,11 @@
 import express, { Application } from 'express';
 import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
 import routes from './routes';
 import { errorHandler, notFoundHandler } from './middlewares/error.middleware';
 import { Request, Response } from 'express';
+import { swaggerSpec } from './config/swagger';
+
 const app: Application = express();
 
 app.use(cors());
@@ -16,6 +19,7 @@ app.get('/health', (req:Request, res: Response) => {
   });
 });
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api', routes);
 
 app.use(notFoundHandler);

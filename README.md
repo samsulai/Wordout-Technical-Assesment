@@ -31,6 +31,8 @@ npm run dev
 
 The server will start on `http://localhost:3000`
 
+API Documentation: `http://localhost:3000/api-docs`
+
 ## API Endpoint
 
 **POST** `/api/subscribe`
